@@ -1,6 +1,5 @@
 const dom = []
 const invalidated = []
-const body = document.getElementsByTagName("body")[0]
 
 function AppendDOM(parent, initialModel, view) {
   let element = {
