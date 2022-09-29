@@ -1,0 +1,32 @@
+<body>
+</body>
+
+<script>
+  const dom = []
+  const body = document.getElementsByTagName("body")[0]
+
+  function New(parent, initialModel, view) {
+    let element = {
+      Parent: parent,
+      Model: initialModel,
+      View: view
+    }
+    dom.push(element)
+    return element
+  }
+
+  function invalidate(element) {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+  }
+
+  function render() {
+    dom.forEach(element => { 
+      // TODO: Fix bug where invalidation clears recently
+      // rendered components. Maybe introduce cache of changed values.
+      invalidate(element.Parent)
+      element.Parent.appendChild(element.View(element.Model))
+    })
+  }
+</script>
