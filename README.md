@@ -1,4 +1,4 @@
-# js_toy
+# js_mvc_toy
 
 Making a MVC (model-view-controller) Javascript engine.
 
