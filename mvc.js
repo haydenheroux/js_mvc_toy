@@ -18,7 +18,7 @@ function isInvalidated(htmlElement) {
 function invalidate(htmlElement) {
   if (isInvalidated(htmlElement)) return
   while (htmlElement.firstChild) {
-    element.removeChild(htmlElement.firstChild)
+    htmlElement.removeChild(htmlElement.firstChild)
   }
   INVALIDATED.push(htmlElement)
 }
