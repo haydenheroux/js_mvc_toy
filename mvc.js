@@ -27,7 +27,7 @@ function resetInvalidated() {
   while (INVALIDATED.length > 0) INVALIDATED.pop()
 }
 
-function render() {
+function Render() {
   resetInvalidated()
   DOM.forEach(element => { 
     invalidate(element.Parent)
