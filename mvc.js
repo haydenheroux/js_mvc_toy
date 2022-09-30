@@ -1,5 +1,5 @@
-const dom = []
-const invalidated = []
+const DOM = []
+const INVALIDATED = []
 
 function AppendDOM(parent, initialModel, view) {
   let element = {
@@ -7,29 +7,29 @@ function AppendDOM(parent, initialModel, view) {
     Model: initialModel,
     View: view
   }
-  dom.push(element)
+  DOM.push(element)
   return element
 }
 
-function isInvalidated(element) {
-  return invalidated.indexOf(element) != -1;
+function isInvalidated(htmlElement) {
+  return INVALIDATED.indexOf(htmlElement) != -1
 }
 
-function invalidate(element) {
-  if (isInvalidated(element)) return
-  while (element.firstChild) {
-    element.removeChild(element.firstChild)
+function invalidate(htmlElement) {
+  if (isInvalidated(htmlElement)) return
+  while (htmlElement.firstChild) {
+    element.removeChild(htmlElement.firstChild)
   }
-  invalidated.push(element)
+  INVALIDATED.push(htmlElement)
 }
 
-function clearInvalid() {
-  while (invalidated.length > 0) invalidated.pop()
+function resetInvalidated() {
+  while (INVALIDATED.length > 0) INVALIDATED.pop()
 }
 
 function render() {
-  clearInvalid()
-  dom.forEach(element => { 
+  resetInvalidated()
+  DOM.forEach(element => { 
     invalidate(element.Parent)
     element.Parent.appendChild(element.View(element.Model))
   })
